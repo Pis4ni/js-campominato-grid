@@ -1,8 +1,12 @@
 // recuper dal dom gli elementi di interesse
 const cellsContainer = document.getElementById('cells-container')
 const startBtn = document.getElementById('generate-grid')
+
+
 const difficulty = document.getElementById('difficulty')
+let difficultyOption = difficulty.options[difficulty.selectedIndex];
 let difficultyValue = difficulty.value
+let difficultyText = difficultyOption.textContent;
 console.log(difficultyValue);
 // todo totale celle temporaneo da legare alla select futura
 let cellsTotal = difficultyValue * difficultyValue;
@@ -18,11 +22,13 @@ console.log(cellsTotal);
 startBtn.addEventListener('click', () =>{
     cellsContainer.innerHTML = ''
     difficultyValue = difficulty.value
+    difficultyOption = difficulty.options[difficulty.selectedIndex];
+    difficultyText = difficultyOption.textContent;
     cellsTotal = difficultyValue * difficultyValue
     for (let i = 1; i <= cellsTotal; i++) {
         generateCell(cellsContainer, i, difficultyValue);
     }
-    console.log(cellsTotal);
+    console.log('created a grid with ' + cellsTotal +  ' elements, difficulty: ' + difficultyText );
 })
 
 // ! FUNCTIONS
@@ -49,6 +55,16 @@ function generateCell(container, i, difficulty){
     cell.addEventListener('click', function(){
         const index =this.getAttribute('data-index');
         this.innerText = index;
+        if (this.classList.contains('enlighted')) {
+            this.classList.remove('enlighted')  
+            this.innerText = '';
+            console.log('removed ' + index);
+        }else{
+            this.classList.add('enlighted')  
+            console.log(index);
+
+        }
+/*         // colorazione su numero pari dispari
         if (this.classList.contains('cell-odd') || this.classList.contains('cell-even')) {
             this.classList.remove('cell-odd') 
             this.classList.remove('cell-even') 
@@ -56,7 +72,9 @@ function generateCell(container, i, difficulty){
         }else if (index % 2 !== 0 ) {
             this.classList.add('cell-odd')
         }else if (index % 2 == 0 ) {
-            this.classList.add('cell-even')}
+            this.classList.add('cell-even')} */
+
+
     })
 
     cellsContainer.append(cell)
