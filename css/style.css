@@ -1,0 +1,29 @@
+html
+body{
+    background-color: #343443;
+}
+
+.cell{
+    color: white;
+    border: 2px solid white;
+    width: calc(100% / 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+}
+.cell-odd{
+    background-color: #cc5050;
+}
+.cell-even{
+    background-color: #50cc50;
+}
+
+.cells-list{
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type:none;
+}
