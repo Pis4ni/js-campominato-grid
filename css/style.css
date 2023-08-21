@@ -2,11 +2,18 @@ html
 body{
     background-color: #343443;
 }
-
+.w-easy{
+    width: calc(100% / 10);
+}
+.w-medium{
+    width: calc(100% / 9);
+}
+.w-hard{
+    width: calc(100% / 7);
+}
 .cell{
     color: white;
     border: 2px solid white;
-    width: calc(100% / 8);
     display: flex;
     justify-content: center;
     align-items: center;
